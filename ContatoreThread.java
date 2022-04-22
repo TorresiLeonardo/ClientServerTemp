@@ -1,4 +1,0 @@
-class ContatoreThread extends Thread {
-
-
-}
