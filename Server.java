@@ -2,25 +2,31 @@ import java.io.*;
 import java.net.*;
 
 public class Server{
-
-  int port;
+  ServerSocket ss;
+  Socket so;
   
   public Server(int port){
-    this.port=port;
+    try{
+      ss= new ServerSocket(port);
+      System.out.println("<s> in ascolto");
+      
+    }catch(IOException ex){
+      System.out.println("<cs> errore nella creazione del server");
+      
+    }
+    
+  }
+
+  public void inAscolto(){
+    try{
+      so= ss.accept();
+      System.out.println("<s> connessione stabilita");
+      
+    }catch(IOException ex){
+      System.out.println("<cs> problema nella creazione del socket");
+      
+    }
+    
   }
   
-  Socket socket= null;
-    
-  try{
-  ServerSocket sSocket= new ServerSocket(port);
-    System.out.println("In attesa di connetersi con il client");
-          
-    socket=sSocket.accept();
-    System.out.println("Server connesso con il socket: "+ socket.getRemoteSocketAddress());
-    
-  }catch(BindException be){
-    System.err.println("Server già avviato");
-  }catch(Exception e){
-    System.out.println(e.getMessage());
-  }
 }
