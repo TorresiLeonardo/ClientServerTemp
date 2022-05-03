@@ -21,7 +21,7 @@ public class Client{
     String msg="";
     
     try{
-      msg=br.readLine();
+      msg=("<c> il server dice: '"+br.readLine()+"'");
       
     }catch(IOException ex){
       System.out.println("<cs> Errore nella lettura");
