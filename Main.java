@@ -6,10 +6,10 @@ import java.net.UnknownHostException;
 public class Main {
   public static void main(String[] args) {
     Server srv = new Server(2000);
-    srv.inAscolto();
 
     try {
       Client cli = new Client(2000, InetAddress.getLocalHost());
+      srv.inAscolto();
       srv.scrivi("ciao client");
 
     String messaggioLetto = cli.leggi();
